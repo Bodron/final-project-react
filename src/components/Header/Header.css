@@ -1,0 +1,14 @@
+.nav-link {
+  color: #ffffff !important;
+}
+.navbar {
+  background-color: #080a12;
+}
+.navbar-toggler {
+  background-color: #ffffff !important;
+}
+.navbar-nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 5px;
+}
