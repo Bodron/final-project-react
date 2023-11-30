@@ -1,0 +1,37 @@
+.imgopc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url(./images/oozinghoney.jpeg);
+  background-position: center;
+  background-repeat: no-repeat;
+  -webkit-mask-image: linear-gradient(to top, transparent 5%, black 12%);
+  mask-image: linear-gradient(to top, transparent 5%, black 75%);
+  z-index: -4;
+  margin: 0 !important;
+  padding: 0 !important;
+  background-size: cover;
+}
+.containerabs {
+  background-color: rgba(0, 0, 0, 0.85);
+}
+.buttons-details #quantitydetails {
+  border-radius: 7px;
+}
+.btn-details {
+  width: 200px;
+  margin-left: 200px;
+  margin-right: 100px;
+}
+.container-white {
+  background-color: #080a12;
+  border-radius: 15px;
+  border-bottom: 1px solid #fafafa;
+  border-top: 1px solid #fafafa;
+}
+@media only screen and (max-width: 600px) {
+  #imgDetails {
+    width: 300px;
+    margin-bottom: -100px;
+  }
+}

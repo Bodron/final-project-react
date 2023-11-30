@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import './CardGroup.css'
 import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
 
 function Cards() {
@@ -21,7 +22,7 @@ function Cards() {
         <Link to="/itemdetails ">
               <button  className='btn-card '>Cumpara</button>
               </Link>
-          <button  className='btn-cardfav '>Favorite</button>
+          <button  className='btn-cardfav '><FavoriteBorderIcon/></button>
           </div>
     </Card>
     <Card>
@@ -37,7 +38,7 @@ function Cards() {
         <Link to="/itemdetails ">
               <button  className='btn-card '>Cumpara</button>
               </Link>
-          <button  className='btn-cardfav '>Favorite</button>
+          <button  className='btn-cardfav '><FavoriteBorderIcon/></button>
           </div>
     </Card>
     <Card>
@@ -54,7 +55,7 @@ function Cards() {
         <Link to="/itemdetails ">
               <button  className='btn-card '>Cumpara</button>
               </Link>
-          <button  className='btn-cardfav '>Favorite</button>
+          <button  className='btn-cardfav '><FavoriteBorderIcon/></button>
           </div>
     </Card>
   </CardGroup>

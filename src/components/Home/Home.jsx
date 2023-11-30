@@ -1,5 +1,6 @@
 import React from 'react'
 import './Home.css'
+import Carousel from 'react-bootstrap/Carousel';
 import Footer from '../Footer/Footer';
 import Cards from '../../features/CardGroup/CardGroup'
 import Header from '../Header/Header';
@@ -19,8 +20,23 @@ function Home() {
     <div className='container-md mb-5'>
         <h1 className='text-white'>Recomandate</h1>
         <hr className='white-line'/>
-        <Cards/>
     </div>
+    <Carousel className='p-4'>
+      <Carousel.Item interval={1000} >
+       
+        
+        <Cards />
+       
+      </Carousel.Item>
+      <Carousel.Item interval={500}>
+      <Cards/>
+       
+      </Carousel.Item>
+      <Carousel.Item>
+      <Cards/>
+        
+      </Carousel.Item>
+    </Carousel>
     <hr className='white-line mb-5'/>
     <div className='container-fluid mb-5 d-flex content-wrapper '>
         <div className='col-md coloana-img '>

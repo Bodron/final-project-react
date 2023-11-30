@@ -2,6 +2,7 @@ import React from 'react'
 import './SignIn.css'
 import Header from '../Header/Header'
 import Button from 'react-bootstrap/Button';
+import Footer from '../Footer/Footer';
 import Form from 'react-bootstrap/Form';
 
 function SignIn() {
@@ -50,6 +51,7 @@ function SignIn() {
       </Button>
     </Form>
           </div>
+          <div className='m-5'><Footer/></div>
     </div>
   )
 }

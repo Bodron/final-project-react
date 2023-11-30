@@ -19,6 +19,7 @@ function CartItem() {
                   <p  className=''>150 Ron</p>
                 </div>
                 <div className='col-md-5 d-flex align-items-start justify-content-center flex-column'>
+                <input type="number" id="quantity" placeholder='1' name="quantity" min="1" max="5" className='mb-2'/>
                 <div className='d-flex justify-content-evenly'><button  className='btn-cardfav '>Remove Article</button></div>
                 </div>
               </div>

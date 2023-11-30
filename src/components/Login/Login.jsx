@@ -3,6 +3,7 @@ import './Login.css'
 import Header from '../Header/Header'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import Footer from '../Footer/Footer';
 
 function Login() {
   return (
@@ -18,7 +19,7 @@ function Login() {
               style={{objectFit:'contain'}}
             />
           </div>
-          <div className='container-md container-formm p-5 '>
+          <div className='container-md container-formm p-5  '>
           <Form>
             <h1 className='text-center text-white mb-5'>Login</h1>
         
@@ -39,6 +40,7 @@ function Login() {
       </Button>
     </Form>
           </div>
+          <div className='m-5'><Footer/></div>
     </div>
   )
 }
