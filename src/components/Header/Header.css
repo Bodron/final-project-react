@@ -53,3 +53,11 @@
   -webkit-mask-image: linear-gradient(to top, transparent 1%, black 50%);
   mask-image: linear-gradient(to top, transparent 15%, black 75%);
 }
+.offcanvas-body .navbar-nav {
+  display: flex;
+  align-items: center !important;
+}
+.dropdown > button {
+  display: flex;
+  align-items: end;
+}

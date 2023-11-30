@@ -1,0 +1,15 @@
+@media only screen and (max-width: 600px) {
+  .offcanvas-body {
+    background: #ffffff;
+  }
+  .offcanvas-header {
+    background-color: #ffffff;
+  }
+  .btn-close {
+    background-color: white !important;
+  }
+}
+.me-2 {
+  background-color: red !important;
+  border: none !important;
+}

@@ -1,0 +1,21 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "bub@.com",
+      "password": "parola",
+      "firstName": "Cosmin",
+      "lastName": "Bodron"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "userId": 1,
+      "title": "Miere Tei",
+      "description": "Miere de tei de cea mai buna calitate",
+      "price": 15,
+      "category": "Tei"
+    }
+  ]
+}

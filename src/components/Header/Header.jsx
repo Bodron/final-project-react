@@ -1,4 +1,5 @@
 import React from 'react'
+import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
@@ -11,9 +12,20 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import './Header.css'
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
-import { deepOrange, deepPurple } from '@mui/material/colors';
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import Cart from '../../features/Cart/Cart';
+
+
 
 function Header() {
+  const [showNavbar, setShowNavbar] = useState(false);
+  const [showCart, setShowCart] = useState(false);
+
+  const handleNavbarClose = () => setShowNavbar(false);
+  const handleNavbarShow = () => setShowNavbar(true);
+
+  const handleCartClose = () => setShowCart(false);
+  const handleCartShow = () => setShowCart(true);
   return (
     <>
     {['sm'].map((expand) => (
@@ -31,11 +43,13 @@ function Header() {
             />{' '}
           </Navbar.Brand>
           </NavLink>
-          <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
+          <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}` } onClick={handleNavbarShow} />
           <Navbar.Offcanvas
             id={`offcanvasNavbar-expand-${expand}`}
             aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
             placement="end"
+            show={showNavbar}
+            onHide={handleNavbarClose}
           >
             <Offcanvas.Header closeButton>
               <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
@@ -57,18 +71,18 @@ function Header() {
               <Nav.Link><NavLink to='/poliflora'>Poliflora</NavLink></Nav.Link>
               <Nav.Link><NavLink to='/accesorii'>Accesorii</NavLink></Nav.Link>
               <Nav.Link><NavLink to='/login'>Login</NavLink></Nav.Link>
-              <Nav.Link><NavLink to='/signin'>Sign In</NavLink></Nav.Link>
-                
+              <Nav.Link><NavLink to='/signin'>Sign Up</NavLink></Nav.Link>
+              <Cart show={showCart} handleClose={handleCartClose} handleOpen={handleCartShow} />
                 <Dropdown>
-      <Dropdown.Toggle variant="success" id="dropdown-basic">
-      <Stack direction="row" spacing={2}>
-                <Avatar>B</Avatar>
-                </Stack>
-      </Dropdown.Toggle>
+                  <Dropdown.Toggle variant="success" id="dropdown-basic">
+                    <Stack direction="row" spacing={2}>
+                      <Avatar>B</Avatar>
+                    </Stack>
+                  </Dropdown.Toggle>
 
       <Dropdown.Menu>
         <Dropdown.Item className='bold'><NavLink to='/profile'>Profile</NavLink></Dropdown.Item>
-        <Dropdown.Item  className='bold'href="#/action-2">Admin</Dropdown.Item>
+        <Dropdown.Item  className='bold'><NavLink to='/admin'>Admin</NavLink></Dropdown.Item>
         <Dropdown.Item  className='bold'href="#/action-3">Logout</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>

@@ -1,8 +1,10 @@
 import React from 'react'
 import './GridCards.css'
+import { Link } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
 
 function GridCards({imageUrl}) {
@@ -21,7 +23,12 @@ function GridCards({imageUrl}) {
                 longer.
               </Card.Text>
             </Card.Body>
-            <div className='d-flex justify-content-between'><button  className='btn-card '>Cumpara</button><button  className='btn-cardfav '>Favorite</button></div>
+            <div className='d-flex justify-content-between'>
+              <Link to="/itemdetails ">
+              <button  className='btn-card '>Cumpara</button>
+              </Link>
+              <button  className='btn-cardfav '><FavoriteBorderIcon/></button>
+              </div>
           </Card>
         </Col>
       ))}

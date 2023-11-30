@@ -17,3 +17,6 @@
 .table tbody {
   background-color: #080a12 !important;
 }
+.form-check-label {
+  color: white;
+}

@@ -20,7 +20,7 @@ function SignIn() {
           </div>
           <div className='container-md container-formm p-5 '>
           <Form>
-            <h1 className='text-center text-white mb-5'>Sign In</h1>
+            <h1 className='text-center text-white mb-5'>Sign Up</h1>
           <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Label className='text-white bold'>First name</Form.Label>
         <Form.Control type="text" placeholder="FirstName" />
