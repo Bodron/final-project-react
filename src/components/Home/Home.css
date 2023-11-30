@@ -4,6 +4,8 @@
 }
 .wrapper-img img {
   object-fit: contain;
+  -webkit-mask-image: linear-gradient(to top, transparent 5%, black 75%);
+  mask-image: linear-gradient(to top, transparent 15%, black 75%);
 }
 .white-line {
   color: white;

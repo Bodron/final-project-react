@@ -1,0 +1,19 @@
+.profile-btn:active {
+  background-color: #27272a !important;
+}
+.profile-btn:focus {
+  background-color: #27272a !important;
+}
+.profile-btn:hover.nav-pills {
+  background-color: #27272a !important;
+}
+.profile-btn {
+  border-radius: 7px;
+  margin-bottom: 15px;
+}
+.p-talent {
+  text-decoration: underline;
+}
+.table tbody {
+  background-color: #080a12 !important;
+}

@@ -7,7 +7,11 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import { NavLink } from 'react-router-dom';
+import Dropdown from 'react-bootstrap/Dropdown';
 import './Header.css'
+import Avatar from '@mui/material/Avatar';
+import Stack from '@mui/material/Stack';
+import { deepOrange, deepPurple } from '@mui/material/colors';
 
 function Header() {
   return (
@@ -15,16 +19,18 @@ function Header() {
     {['sm'].map((expand) => (
       <Navbar key={expand} expand={expand} className=" fixed-top mb-3">
         <Container fluid>
-        <Navbar.Brand href="#home">
+          <NavLink to="/home">
+        <Navbar.Brand >
             <img
               alt=""
               src="/images/bees-logo.jpeg"
               width="100"
               height="70"
-              className="d-inline-block align-top"
+              className="d-inline-block align-top img-header"
               style={{objectFit:'contain'}}
             />{' '}
           </Navbar.Brand>
+          </NavLink>
           <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
           <Navbar.Offcanvas
             id={`offcanvasNavbar-expand-${expand}`}
@@ -33,19 +39,40 @@ function Header() {
           >
             <Offcanvas.Header closeButton>
               <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
-                Offcanvas
+              <img
+              alt=""
+              src="/images/bees-logo.jpeg"
+              width="100"
+              height="70"
+              className="d-inline-block align-top img-login"
+              style={{objectFit:'contain'}}
+            />{' '}
               </Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
               <Nav className="justify-content-end flex-grow-1 pe-3">
-                <NavLink to='/home'>Acasa</NavLink>
-                <NavLink to='/tei'>Tei</NavLink>
-                <Nav.Link href="#action2">Salcam</Nav.Link>
-                <Nav.Link href="#action2">Poliflora</Nav.Link>
-                <Nav.Link href="#action2">Utilaje</Nav.Link>
-                <Nav.Link href="#action2">Login</Nav.Link>
-                <Nav.Link href="#action2">Sign in</Nav.Link>
-                <Nav.Link href="#action2">Logout</Nav.Link>
+              <Nav.Link><NavLink to='/home'>Acasa</NavLink></Nav.Link>
+              <Nav.Link><NavLink to='/tei'>Tei</NavLink></Nav.Link>
+              <Nav.Link><NavLink to='/salcam'>Salcam</NavLink></Nav.Link>
+              <Nav.Link><NavLink to='/poliflora'>Poliflora</NavLink></Nav.Link>
+              <Nav.Link><NavLink to='/accesorii'>Accesorii</NavLink></Nav.Link>
+              <Nav.Link><NavLink to='/login'>Login</NavLink></Nav.Link>
+              <Nav.Link><NavLink to='/signin'>Sign In</NavLink></Nav.Link>
+                
+                <Dropdown>
+      <Dropdown.Toggle variant="success" id="dropdown-basic">
+      <Stack direction="row" spacing={2}>
+                <Avatar>B</Avatar>
+                </Stack>
+      </Dropdown.Toggle>
+
+      <Dropdown.Menu>
+        <Dropdown.Item className='bold'><NavLink to='/profile'>Profile</NavLink></Dropdown.Item>
+        <Dropdown.Item  className='bold'href="#/action-2">Admin</Dropdown.Item>
+        <Dropdown.Item  className='bold'href="#/action-3">Logout</Dropdown.Item>
+      </Dropdown.Menu>
+    </Dropdown>
+                
               </Nav>
             </Offcanvas.Body>
           </Navbar.Offcanvas>

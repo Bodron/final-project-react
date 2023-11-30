@@ -1,0 +1,43 @@
+.container-formm {
+  width: 500px !important;
+  border: 1px solid #27272a;
+  border-radius: calc(1rem - 2px);
+}
+#formBasicEmail {
+  background-color: black;
+  border-radius: calc(1rem - 2px) !important;
+  color: white !important;
+  border: 1px solid #27272a;
+}
+#formBasicPassword {
+  background-color: black;
+  border-radius: calc(1rem - 2px) !important;
+  color: white !important;
+  border: 1px solid #27272a;
+}
+.bold {
+  font-weight: bold !important;
+}
+
+#formBasicPassword::placeholder {
+  color: #696970;
+}
+#formBasicEmail::placeholder {
+  color: #696970;
+}
+.btn {
+  width: 100%;
+  background-color: #fafafa !important;
+  color: black !important;
+}
+@media only screen and (max-width: 600px) {
+  .container-formm {
+    width: 380px !important;
+    border: 1px solid #27272a;
+    border-radius: calc(1rem - 2px);
+  }
+}
+.img-login {
+  -webkit-mask-image: linear-gradient(to top, transparent 1%, black 50%);
+  mask-image: linear-gradient(to top, transparent 15%, black 75%);
+}

@@ -8,29 +8,18 @@
   -webkit-mask-image: linear-gradient(to top, transparent 1%, black 75%);
   mask-image: linear-gradient(to top, transparent 5%, black 75%);
 }
-
-.btn-grad {
-  background-image: linear-gradient(
-    to left,
-    #000000 0%,
-    #414345 51%,
-    #000000 100%
-  );
-  margin: 10px;
-  padding: 15px 45px;
-  text-align: center;
-  text-transform: uppercase;
-  transition: 0.5s;
-  background-size: 200% auto;
-  color: rgba(255, 255, 255, 0.89) !important;
-  box-shadow: 0 0 20px #000000;
-  border-radius: 10px;
-  display: block;
+.btn-card {
+  padding: 10px 15px;
+  border-radius: 5px;
+  border: 1px solid white;
+  border: none;
+  background-color: #fafafa;
 }
-
-.btn-grad:hover {
-  background-position: right center; /* change the direction of the change here */
-  color: #fff;
-  text-decoration: none;
-  scale: 1.1;
+.btn-cardfav {
+  padding: 10px 15px;
+  color: white;
+  border-radius: 5px;
+  border: 1px solid white;
+  border: none;
+  background-color: #080a12;
 }

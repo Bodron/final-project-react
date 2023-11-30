@@ -16,7 +16,7 @@ function Cards() {
           to additional content. This content is a little bit longer.
         </Card.Text>
       </Card.Body>
-        <div className='d-flex justify-content-between'><button  className='btn-grad '>Cumpara</button><button  className='btn-grad '>Favorite</button></div>
+        <div className='d-flex justify-content-between'><button  className='btn-card '>Cumpara</button><button  className='btn-cardfav '>Favorite</button></div>
     </Card>
     <Card>
       <Card.Img variant="top" src="images/card1.jpg" />
@@ -27,7 +27,7 @@ function Cards() {
           additional content.{' '}
         </Card.Text>
       </Card.Body>
-        <div className='d-flex justify-content-between'><button  className='btn-grad '>Cumpara</button><button  className='btn-grad '>Favorite</button></div>
+        <div className='d-flex justify-content-between'><button  className='btn-card '>Cumpara</button><button  className='btn-cardfav '>Favorite</button></div>
     </Card>
     <Card>
       <Card.Img variant="top" src="images/card1.jpg" />
@@ -39,7 +39,7 @@ function Cards() {
           first to show that equal height action.
         </Card.Text>
       </Card.Body>
-        <div className='d-flex justify-content-between'><button  className='btn-grad '>Cumpara</button><button  className='btn-grad '>Favorite</button></div>
+        <div className='d-flex justify-content-between'><button  className='btn-card '>Cumpara</button><button  className='btn-cardfav '>Favorite</button></div>
     </Card>
   </CardGroup>
   )
