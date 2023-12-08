@@ -14,10 +14,23 @@ import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import Cart from '../../features/Cart/Cart';
+import { useStateValue } from '../../StateProvider';
+import { auth } from '../firebase';
+
 
 
 
 function Header() {
+
+  function logout (){
+    if(user){
+      auth.signOut()
+    }
+  }
+
+  const [{user}] = useStateValue()
+  
+
   const [showNavbar, setShowNavbar] = useState(false);
   const [showCart, setShowCart] = useState(false);
 
@@ -72,18 +85,22 @@ function Header() {
               <Nav.Link><NavLink to='/accesorii'>Accesorii</NavLink></Nav.Link>
               <Nav.Link><NavLink to='/login'>Login</NavLink></Nav.Link>
               <Nav.Link><NavLink to='/signin'>Sign Up</NavLink></Nav.Link>
+              <Nav.Link><NavLink >Hello {user?.displayName}</NavLink></Nav.Link>
+              
+            
+              
               <Cart show={showCart} handleClose={handleCartClose} handleOpen={handleCartShow} />
                 <Dropdown>
                   <Dropdown.Toggle variant="success" id="dropdown-basic">
                     <Stack direction="row" spacing={2}>
-                      <Avatar>B</Avatar>
+                    <Avatar>{user?.displayName ? user.displayName.charAt(0).toUpperCase() : ""}</Avatar>
                     </Stack>
                   </Dropdown.Toggle>
 
       <Dropdown.Menu>
         <Dropdown.Item className='bold'><NavLink to='/profile'>Profile</NavLink></Dropdown.Item>
         <Dropdown.Item  className='bold'><NavLink to='/admin'>Admin</NavLink></Dropdown.Item>
-        <Dropdown.Item  className='bold'href="#/action-3">Logout</Dropdown.Item>
+        <Dropdown.Item  className='bold'><NavLink onClick={logout} >Logout</NavLink></Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
                 

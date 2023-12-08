@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Header from './Header/Header';
 import Home from './Home/Home';
 import Footer from './Footer/Footer';
@@ -13,14 +13,44 @@ import Poliflora from './Poliflora/Poliflora';
 import SignIn from './SignIn/SignIn';
 import Profile from './Profile/Profile';
 import ItemDetails from './ItemDetails/ItemDetails';
+import { useStateValue } from '../StateProvider';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css'
+
 
 
 
 function App() {
+  
+ const [{user},dispatch]= useStateValue()
+
+  useEffect(() => {
+    const auth = getAuth()
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        dispatch({
+          type: 'SET_USER',
+          user: user,
+        })
+      } else {
+        dispatch({
+          type: 'SET_USER',
+          user: null,
+        })
+      }
+    })
+    return () => {
+      unsubscribe()
+    }
+  }, [])
+ 
+
   return (
+   
+    <>
     <BrowserRouter>
-    <div>
-     
+ 
       <Routes path="/">
         <Route path="/tei" exact element={<Tei />}></Route>
         <Route path="/itemdetails" exact element={<ItemDetails />}></Route>
@@ -34,8 +64,19 @@ function App() {
         <Route path="/home" exact element={<Home />}></Route>
         <Route path="/" exact element={<Home />}></Route>
       </Routes>
-      </div>
+      <ToastContainer position="top-right"
+autoClose={5000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="dark"/>
     </BrowserRouter>
+      </>
+    
   )
 }
 

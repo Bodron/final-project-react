@@ -94,42 +94,42 @@ function Profile() {
             <Tab.Pane eventKey="fourth">
             <Form>
             <h4 className='text-white mb-5'>Adresses</h4>
-          <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Group className="mb-3" controlId="adressName">
         <Form.Label className='text-white bold'>Name</Form.Label>
-        <Form.Control type="text" placeholder="Name" />
+        <Form.Control type="text" placeholder="Name" className='blackInput' />
       </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicPassword">
+      <Form.Group className="mb-3" controlId="adressSurname">
         <Form.Label className='text-white bold'>Surnames *</Form.Label>
-        <Form.Control type="password" placeholder="Surnames" />
+        <Form.Control type="password" placeholder="Surnames" className='blackInput' />
       </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicPassword">
+      <Form.Group className="mb-3" controlId="adressPhoneNumber">
         <Form.Label className='text-white bold'>Telephone number </Form.Label>
-        <Form.Control type="password" placeholder="Telephone number" />
+        <Form.Control type="password" placeholder="Telephone number" className='blackInput' />
       </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicPassword">
+      <Form.Group className="mb-3" controlId="adressLocation">
         <Form.Label className='text-white bold'>Address * </Form.Label>
-        <Form.Control type="password" placeholder="Address" />
+        <Form.Control type="password" placeholder="Address"  className='blackInput'/>
       </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicPassword">
+      <Form.Group className="mb-3" controlId="adressCountry">
         <Form.Label className='text-white bold'>Country</Form.Label>
-        <Form.Control type="password" placeholder="Country" />
+        <Form.Control type="password" placeholder="Country" className='blackInput' />
       </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicPassword">
+      <Form.Group className="mb-3" controlId="adressState">
         <Form.Label className='text-white bold'>State/Province</Form.Label>
-        <Form.Control type="password" placeholder="State/Province" />
+        <Form.Control type="password" placeholder="State/Province" className='blackInput' />
       </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicPassword">
+      <Form.Group className="mb-3" controlId="adressCity">
         <Form.Label className='text-white bold'>City</Form.Label>
-        <Form.Control type="password" placeholder="City" />
+        <Form.Control type="password" placeholder="City" className='blackInput' />
       </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicPassword">
+      <Form.Group className="mb-3" controlId="adressZip">
         <Form.Label className='text-white bold'>Zip code</Form.Label>
-        <Form.Control type="password" placeholder="Zip code" />
+        <Form.Control type="password" placeholder="Zip code" className='blackInput' />
       </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicCheckbox">
+      <Form.Group className="mb-3" controlId="defaultBilling">
         <Form.Check type="checkbox" label="Use as my default billing address" />
       </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicCheckbox">
+      <Form.Group className="mb-3" controlId="defaultShipping">
         <Form.Check type="checkbox" label="Use as my default shipping address" />
       </Form.Group>
       <Button variant="primary" type="submit">
@@ -139,23 +139,23 @@ function Profile() {
             </Tab.Pane>
             <Tab.Pane eventKey="five"> <Form>
             <h4 className='text-white mb-5'>Personal information</h4>
-          <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Group className="mb-3" >
         <Form.Label className='text-white bold'>Name</Form.Label>
-        <Form.Control type="text" placeholder="Name" />
+        <Form.Control type="text" placeholder="Name" className='blackInput'/>
       </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicPassword">
+      <Form.Group className="mb-3" >
         <Form.Label className='text-white bold'>Surnames *</Form.Label>
-        <Form.Control type="password" placeholder="Surnames" />
+        <Form.Control type="password" placeholder="Surnames" className='blackInput'/>
       </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicPassword">
+      <Form.Group className="mb-3" >
         <Form.Label className='text-white bold'>Telephone number </Form.Label>
-        <Form.Control type="password" placeholder="Telephone number" />
+        <Form.Control type="password" placeholder="Telephone number" className='blackInput'/>
       </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicCheckbox">
-        <Form.Check type="checkbox" label="Change e-mail address" />
+      <Form.Group className="mb-3" >
+        <Form.Check type="checkbox" label="Change e-mail address" id='emailBox' />
       </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicCheckbox">
-        <Form.Check type="checkbox" label="Change password" />
+      <Form.Group className="mb-3" >
+        <Form.Check type="checkbox" label="Change password"  id='passwordBox' />
       </Form.Group>
       <Button variant="primary" type="submit">
         Save

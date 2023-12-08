@@ -6,11 +6,14 @@ import Cards from '../../features/CardGroup/CardGroup'
 import Header from '../Header/Header';
 import simpleParallax from 'simple-parallax-js';
 
+
+
 var image = document.getElementsByClassName('thumbnail');
 new simpleParallax(image);
 
 
 function Home() {
+
   return (
     <>
     <Header/>
@@ -18,7 +21,7 @@ function Home() {
         <img src="./images/bees-logo.jpeg" alt="logo" />
     </div> 
     <div className='container-md mb-5'>
-        <h1 className='text-white'>Recomandate</h1>
+        <h1 className='text-white'>Recomandate </h1>
         <hr className='white-line'/>
     </div>
     <Carousel className='p-4'>

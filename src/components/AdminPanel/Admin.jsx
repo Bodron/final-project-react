@@ -73,23 +73,23 @@ function Admin() {
                     <Modal.Body>
                     <Form>
            
-          <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Group className="mb-3" controlId="updateAdminTitle">
         <Form.Label className='text-white bold'>Titlu</Form.Label>
         <Form.Control type="text" placeholder="Title" />
       </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicPassword">
+      <Form.Group className="mb-3" controlId="updateAdminDescription">
         <Form.Label className='text-white bold'>Description</Form.Label>
         <Form.Control type="text" placeholder="Description" />
       </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicPassword">
+      <Form.Group className="mb-3" controlId="updateAdminPrice">
         <Form.Label className='text-white bold'>Price</Form.Label>
         <Form.Control type="text" placeholder="Price" />
       </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicPassword">
+      <Form.Group className="mb-3" controlId="updateAdminCategory">
         <Form.Label className='text-white bold'>Category</Form.Label>
         <Form.Control type="text" placeholder="Category" />
       </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicPassword">
+      <Form.Group className="mb-3" controlId="updateAdminImage">
         <Form.Label className='text-white bold'>Image</Form.Label>
         <Form.Control type="file" placeholder="Category" />
       </Form.Group>
@@ -107,27 +107,23 @@ function Admin() {
                
                 <Form>
             <h4 className='text-white mb-5'>Add new item</h4>
-          <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Group className="mb-3" controlId="adminTitle">
         <Form.Label className='text-white bold'>Titlu</Form.Label>
         <Form.Control type="text" placeholder="Title" />
       </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label className='text-white bold'>Id</Form.Label>
-        <Form.Control type="text" placeholder="Id" />
-      </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicPassword">
+      <Form.Group className="mb-3" controlId="adminDescription">
         <Form.Label className='text-white bold'>Description</Form.Label>
         <Form.Control type="text" placeholder="Description" />
       </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicPassword">
+      <Form.Group className="mb-3" controlId="adminPrice">
         <Form.Label className='text-white bold'>Price</Form.Label>
         <Form.Control type="text" placeholder="Price" />
       </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicPassword">
+      <Form.Group className="mb-3" controlId="adminCategory">
         <Form.Label className='text-white bold'>Category</Form.Label>
         <Form.Control type="text" placeholder="Category" />
       </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicPassword">
+      <Form.Group className="mb-3" controlId="adminImage">
         <Form.Label className='text-white bold'>Image</Form.Label>
         <Form.Control type="file" placeholder="Category" />
       </Form.Group>

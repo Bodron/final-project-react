@@ -30,7 +30,7 @@ function ItemDetails() {
             <div className='col-md-4 p-5 '>
               <div className='item-price'>
                 <h4 className='text-white '>14.00 lei</h4>
-                <p className='text-white' >Status:<p className='text-succes'>In stoc</p></p>
+                <p className='text-white' >Status:</p>
               </div>
               <hr className='white-line'/>
               <div className='description p-3'>
@@ -38,15 +38,15 @@ function ItemDetails() {
               </div>
               <hr className='white-line'/>
               <div className='buttons-details'>
-              <label  className="text-white m-3 "for="quantity">Quantity : </label>
-              <input type="number" id="quantitydetails" value={1} name="quantity" min="1" max="5"/>
+              <label  className="text-white m-3" >Quantity : </label>
+              <input type="number" id="quantitydetails"  name="quantity" min="1" max="5"/>
               <button  className='btn-cardfav btn-details m-2 '>Cumpara</button>
              <FavoriteBorderIcon className='text-white'/> 
               </div>
               <hr className='white-line'/>
               <div className='item-price  m-4'>
                 
-                <p className='text-white ' >Categorie: Miere de albine la borcan<p className='text-succes'>tag: Tei</p></p>
+                <p className='text-white ' >Categorie: Miere de albine la borcan</p>
               </div>
               
             </div>
