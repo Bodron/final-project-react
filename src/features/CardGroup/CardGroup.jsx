@@ -1,63 +1,62 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import './CardGroup.css'
-import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import OneCard from '../Card/Card';
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '../../components/firebase';
+
 
 
 function Cards() {
+  const [products, setProducts] = useState([])
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const productsData = []
+        const querySnapshot = await getDocs(
+          collection(db, 'products'),
+        )
+
+        querySnapshot.forEach((doc) => {
+          const postData = doc.data()
+          const productId = doc.id
+
+          // Adaugă fiecare post în array-ul postsData
+          productsData.push({
+            id: productId,
+            imageUrl:postData.image,
+            title:postData.title,
+            description:postData.descritpion,
+            price:postData.price,
+            category:postData.category
+          })
+        })
+
+        setProducts(productsData)
+      } catch (error) {
+        console.error('Eroare la preluarea datelor:', error)
+      }
+    }
+
+    fetchData()
+  }, [])
   return (
     <CardGroup>
-    <Card>
-      <Card.Img variant="top" src="images/card1.jpg" />
-      <Card.Body>
-        <Card.Title className='text-white'>Miere Tei</Card.Title>
-        <Card.Text className='text-white'>
-          This is a wider card with supporting text below as a natural lead-in
-          to additional content. This content is a little bit longer.
-        </Card.Text>
-      </Card.Body>
-        <div className='d-flex justify-content-between'>
-        <Link to="/itemdetails ">
-              <button  className='btn-card '>Cumpara</button>
-              </Link>
-          <button  className='btn-cardfav '><FavoriteBorderIcon/></button>
-          </div>
-    </Card>
-    <Card>
-      <Card.Img variant="top" src="images/card1.jpg" />
-      <Card.Body>
-        <Card.Title className='text-white'>Miere Salcam</Card.Title>
-        <Card.Text className='text-white'>
-          This card has supporting text below as a natural lead-in to
-          additional content.{' '}
-        </Card.Text>
-      </Card.Body>
-        <div className='d-flex justify-content-between'>
-        <Link to="/itemdetails ">
-              <button  className='btn-card '>Cumpara</button>
-              </Link>
-          <button  className='btn-cardfav '><FavoriteBorderIcon/></button>
-          </div>
-    </Card>
-    <Card>
-      <Card.Img variant="top" src="images/card1.jpg" />
-      <Card.Body>
-        <Card.Title className='text-white'>Miere Poliflora</Card.Title>
-        <Card.Text className='text-white'>
-          This is a wider card with supporting text below as a natural lead-in
-          to additional content. This card has even longer content than the
-          first to show that equal height action.
-        </Card.Text>
-      </Card.Body>
-        <div className='d-flex justify-content-between'>
-        <Link to="/itemdetails ">
-              <button  className='btn-card '>Cumpara</button>
-              </Link>
-          <button  className='btn-cardfav '><FavoriteBorderIcon/></button>
-          </div>
-    </Card>
+       
+   {products.map(({ title, description,price, category, id,imageUrl }) => (
+          <OneCard
+            title={title}
+            postId={id}
+            key={id}
+            image={imageUrl}
+            description={description}
+            price={price}
+            category={category}
+          ></OneCard>
+        ))}
+   
+ 
   </CardGroup>
   )
 }

@@ -50,3 +50,8 @@
     width: 200px;
   }
 }
+.carousel-itemm {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}

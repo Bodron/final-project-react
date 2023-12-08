@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './Home.css'
 import Carousel from 'react-bootstrap/Carousel';
 import Footer from '../Footer/Footer';
@@ -8,11 +8,16 @@ import simpleParallax from 'simple-parallax-js';
 
 
 
+
 var image = document.getElementsByClassName('thumbnail');
 new simpleParallax(image);
 
 
 function Home() {
+
+
+
+  
 
   return (
     <>
@@ -26,9 +31,8 @@ function Home() {
     </div>
     <Carousel className='p-4'>
       <Carousel.Item interval={1000} >
-       
-        
-        <Cards />
+    <Cards/>
+      
        
       </Carousel.Item>
       <Carousel.Item interval={500}>

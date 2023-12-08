@@ -1,3 +1,9 @@
 .modal-content {
   background-color: #080a12 !important;
 }
+.imageUpload_progress {
+  width: 100%;
+}
+.textWhite {
+  color: white !important;
+}

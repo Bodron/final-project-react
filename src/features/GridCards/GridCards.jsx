@@ -1,40 +1,26 @@
-import React from 'react'
-import './GridCards.css'
+import React from 'react';
+import './GridCards.css';
 import { Link } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
-
-function GridCards({imageUrl}) {
+function GridCards({ title, description, price, category, id, image }) {
   return (
-    <>
-      <Row xs={2} md={4} className="g-4">
-      {Array.from({ length: 10 }).map((_, idx) => (
-        <Col key={idx}>
-          <Card>
-            <Card.Img variant="top" src={imageUrl} />
-            <Card.Body>
-              <Card.Title>Card title</Card.Title>
-              <Card.Text>
-                This is a longer card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer.
-              </Card.Text>
-            </Card.Body>
-            <div className='d-flex justify-content-between'>
-              <Link to="/itemdetails ">
-              <button  className='btn-card '>Cumpara</button>
-              </Link>
-              <button  className='btn-cardfav '><FavoriteBorderIcon/></button>
-              </div>
-          </Card>
-        </Col>
-      ))}
-    </Row>
-    </>
-  )
+    <Card className="my-3 mx-2" style={{ width: '18rem' }}>
+      <Card.Img variant="top" src={image} />
+      <Card.Body>
+        <Card.Title>{title}</Card.Title>
+        <Card.Text>{description}</Card.Text>
+        
+      </Card.Body>
+      <div className='d-flex justify-content-between'>
+          <Link to="/itemdetails">
+            <button className='btn-card'>Cumpara</button>
+          </Link>
+          <button className='btn-cardfav '><FavoriteBorderIcon /></button>
+        </div>
+    </Card>
+  );
 }
 
-export default GridCards
+export default GridCards;
