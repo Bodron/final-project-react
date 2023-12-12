@@ -10,6 +10,7 @@ import { useStateValue } from '../../StateProvider';
 
 function Cart({ show, handleClose,handleOpen }) {
   const [{basket}] = useStateValue()
+  console.log(basket)
    
   return (
     
@@ -29,6 +30,7 @@ function Cart({ show, handleClose,handleOpen }) {
                     title={item.title}
                     image={item.image}
                     price={item.price}
+                    cantitate={item.cantitate}
                     />
                 ))}
       

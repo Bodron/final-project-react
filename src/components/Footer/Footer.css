@@ -1,6 +1,7 @@
-.links ul {
-  list-style: none;
-}
-.links ul a {
+.list-links li > a {
+  color: white !important;
   text-decoration: none;
+}
+.list-links li {
+  list-style: none;
 }

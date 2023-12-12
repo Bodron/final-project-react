@@ -8,7 +8,12 @@
   max-height: 220px;
   object-fit: contain;
 }
-
+.card {
+  transition: all 0.1s ease-in;
+}
+.card:hover {
+  scale: 1.1;
+}
 @media only screen and (max-width: 600px) {
   .descr {
     display: none;

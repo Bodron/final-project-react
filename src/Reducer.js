@@ -4,7 +4,10 @@ export const initialState = {
   basket: JSON.parse(localStorage.getItem('basket')) || [],
 }
 export const getBasketTotal = (basket) =>
-  basket?.reduce((amount, item) => Number(item.price) + amount, 0)
+  basket?.reduce(
+    (amount, item) => Number(item.price) * Number(item.cantitate) + amount,
+    0
+  )
 
 function reducer(state, action) {
   switch (action.type) {
@@ -39,6 +42,17 @@ function reducer(state, action) {
       )
       localStorage.setItem('basket', JSON.stringify(newBasket))
       return { ...state, basket: newBasket }
+    case 'UPDATE_QUANTITY':
+      const updatedBasketQuantity = state.basket.map((item) =>
+        item.id === action.id
+          ? { ...item, cantitate: action.newQuantity }
+          : item
+      )
+      localStorage.setItem('basket', JSON.stringify(updatedBasketQuantity))
+      return {
+        ...state,
+        basket: updatedBasketQuantity,
+      }
 
     default:
       return state

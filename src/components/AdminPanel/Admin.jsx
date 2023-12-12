@@ -9,6 +9,7 @@ import Tab from 'react-bootstrap/Tab';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useState } from 'react';
+import { toast } from 'react-toastify'
 
 import {
   getStorage,
@@ -16,7 +17,7 @@ import {
   uploadBytesResumable,
   getDownloadURL,
 } from 'firebase/storage'
-import { collection, addDoc, serverTimestamp, query, getDocs } from 'firebase/firestore'
+import { collection, addDoc, serverTimestamp, query, getDocs, deleteDoc, doc } from 'firebase/firestore'
 import { storage, db } from '../firebase'
 import PanelItem from '../../features/PanelItem/PanelItem';
 
@@ -73,7 +74,7 @@ function Admin() {
             setUploadProgress(0)
             setValues('')
             setImage(null)
-
+            toast.success('Produs adaugat cu succes')
             console.log('Document written with ID: ', docRef.id)
           }
         )
@@ -117,6 +118,17 @@ function Admin() {
   
       fetchData();
     }, []);
+    const handleDelete = async (itemId) => {
+      try {
+        await deleteDoc(doc(db, 'products', itemId));
+        setProducts((prevProducts) => prevProducts.filter((product) => product.id !== itemId));
+  
+        toast.success('Produs sters cu succes!');
+      } catch (error) {
+        console.error('Error deleting product:', error);
+        toast.error('Error deleting product');
+      }
+    };
   
   return (
     <div>
@@ -160,6 +172,7 @@ function Admin() {
             description={description}
             price={price}
             category={category}
+            onDelete={handleDelete}
           ></PanelItem>
         ))}
              

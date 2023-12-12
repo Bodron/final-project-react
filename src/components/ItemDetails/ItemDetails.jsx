@@ -9,12 +9,14 @@ import { doc, getDoc, } from 'firebase/firestore';
 import { useParams } from 'react-router-dom';
 import { db } from '../firebase';
 import { useStateValue } from '../../StateProvider';
+import { toast } from 'react-toastify';
 
 
 function ItemDetails() {
   const [{basket},dispatch] = useStateValue()
   const { id } = useParams();
   const [product, setProduct] = useState(null);
+  const [cantitate, setCantitate] = useState()
 
   const addToBasket = () => {
     dispatch({
@@ -24,8 +26,10 @@ function ItemDetails() {
         title:product.title,
         price:product.price,
         image:product.image,
+        cantitate:cantitate
       }
     })
+    toast.success('Ai adaugat cu succes in cos!')
   }
   useEffect(() => {
     const fetchProductDetails = async () => {
@@ -53,6 +57,10 @@ function ItemDetails() {
 
     fetchProductDetails();
   }, [id]);
+
+  function handleChange(e){
+    setCantitate(e.target.value)
+  }
 
   if (!product) {
     // Poate afișa un mesaj de încărcare sau redirecționa către o pagină de eroare
@@ -88,9 +96,9 @@ function ItemDetails() {
               </div>
               <hr className='white-line'/>
               <div className='buttons-details'>
-              <label  className="text-white m-3" >Quantity : </label>
-              <input type="number" id="quantitydetails"  name="quantity" min="1" max="5"/>
-              <button  className='btn-cardfav btn-details m-2' onClick={addToBasket}>Cumpara</button>
+              <label  className="text-white m-3" >Cantitate: </label>
+              <input type="number" id="quantitydetails"  name="quantity" onChange={handleChange}/>
+              <button  className='btn-card btn-details m-2' onClick={addToBasket}>Adauga in cos</button>
              <FavoriteBorderIcon className='text-white'/> 
               </div>
               <hr className='white-line'/>

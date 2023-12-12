@@ -1,5 +1,6 @@
 import React from 'react'
 import './Footer.css'
+import { NavLink } from 'react-router-dom'
 
 function Footer() {
   return (
@@ -13,11 +14,11 @@ function Footer() {
         </div>
         <div className="col-lg-3 col-xs-12 links">
           <h4 className="mt-lg-0 mt-sm-3 text-white ">Links</h4>
-            <ul className="m-0 p-0 ">
-              <li> <a  className="text-white"href="#">Acasa</a></li>
-              <li> <a  className="text-white"href="#">Tei</a></li>
-              <li> <a  className="text-white"href="#">Salcam</a></li>
-              <li> <a  className="text-white" href="#">Utilaje</a></li>
+            <ul className="m-0 p-0 list-links ">
+              <li> <NavLink to='/home'>Acasa</NavLink></li>
+              <li> <NavLink to='/salcam/Tei'>Tei</NavLink></li>
+              <li> <NavLink to='/salcam/Salcam'>Salcam</NavLink></li>
+              <li> <NavLink to='/salcam/Accesorii'>Accesorii</NavLink></li>
             </ul>
         </div>
         <div className="col-lg-4 col-xs-12 location">
