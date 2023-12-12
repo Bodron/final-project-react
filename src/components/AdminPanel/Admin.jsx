@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './Admin.css'
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
@@ -9,18 +9,20 @@ import Tab from 'react-bootstrap/Tab';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useState } from 'react';
-import Modal from 'react-bootstrap/Modal';
+
 import {
   getStorage,
   ref,
   uploadBytesResumable,
   getDownloadURL,
 } from 'firebase/storage'
-import { collection, addDoc, serverTimestamp } from 'firebase/firestore'
+import { collection, addDoc, serverTimestamp, query, getDocs } from 'firebase/firestore'
 import { storage, db } from '../firebase'
+import PanelItem from '../../features/PanelItem/PanelItem';
 
 function Admin() {
-    const [show, setShow] = useState(false);
+   
+    const [products, setProducts] = useState([])
     const [image, setImage] = useState(null)
     const [uploadProgress, setUploadProgress] = useState(0)
     const [values, setValues] = useState({
@@ -84,6 +86,37 @@ function Admin() {
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const productsData = [];
+          const q = query(collection(db, 'products'))
+          const querySnapshot = await getDocs(q);
+  
+          querySnapshot.forEach((doc) => {
+            const postData = doc.data();
+            const productId = doc.id;
+  
+            // Adaugă fiecare post în array-ul postsData
+            productsData.push({
+              id: productId,
+              imageUrl: postData.image,
+              title: postData.title,
+              description: postData.descritpion,
+              price: postData.price,
+              category: postData.category,
+            });
+          });
+  
+          setProducts(productsData);
+        } catch (error) {
+          console.error('Eroare la preluarea datelor:', error);
+        }
+      };
+  
+      fetchData();
+    }, []);
   
   return (
     <div>
@@ -118,60 +151,18 @@ function Admin() {
                     <option value="4">Accesorii</option>
                 </Form.Select>
                 </div>
-                <div className='row mb-4'>
-                <div className='col'>
-                <img
-              alt=""
-              src="/images/card1.jpg"
-              width="200"
-              height="150"
-              className="d-inline-block align-top "
-              style={{objectFit:'contain'}}
-            />
-                </div>
-                <div className='col d-flex align-items-start justify-content-center flex-column'>
-                  <h5 className='text-white'>Title Product</h5>
-                  <p  className='text-white'>150 Ron</p>
-                </div>
-                <div className='col-md-5 d-flex align-items-start justify-content-center flex-column'>
-                <div className='d-flex justify-content-evenly'><button  className='btn-card'>Delete</button><button  className='btn-cardfav'  onClick={handleShow}>Update</button></div>
-                <Modal show={show} onHide={handleClose}>
-                     <Modal.Header closeButton>
-                     <h4 className='text-white mb-5'>Update item</h4>
-                    </Modal.Header>
-                    <Modal.Body>
-                    <Form>
-           
-          <Form.Group className="mb-3" controlId="updateAdminTitle">
-        <Form.Label className='text-white bold'>Titlu</Form.Label>
-        <Form.Control type="text" placeholder="Title"  />
-      </Form.Group>
-      <Form.Group className="mb-3" controlId="updateAdminDescription">
-        <Form.Label className='text-white bold'>Description</Form.Label>
-        <Form.Control type="text" placeholder="Description" />
-      </Form.Group>
-      <Form.Group className="mb-3" controlId="updateAdminPrice">
-        <Form.Label className='text-white bold'>Price</Form.Label>
-        <Form.Control type="text" placeholder="Price"  />
-      </Form.Group>
-      <Form.Group className="mb-3" controlId="updateAdminCategory">
-        <Form.Label className='text-white bold'>Category</Form.Label>
-        <Form.Control type="text" placeholder="Category" />
-      </Form.Group>
-      <Form.Group className="mb-3" controlId="updateAdminImage">
-        <Form.Label className='text-white bold'>Image</Form.Label>
-        <Form.Control type="file"  />
-        
-      </Form.Group>
-      
-      <Button variant="primary" type="submit">
-      Update
-      </Button>
-    </Form>            
-  </Modal.Body>
-      </Modal>
-                </div>
-              </div>
+                {products.map(({ title, description,price, category, id,imageUrl }) => (
+          <PanelItem
+            title={title}
+            postId={id}
+            id={id}
+            image={imageUrl}
+            description={description}
+            price={price}
+            category={category}
+          ></PanelItem>
+        ))}
+             
             </Tab.Pane>
             <Tab.Pane eventKey="second">
                

@@ -4,3 +4,16 @@
 .card-text {
   color: white !important;
 }
+.maxh-img {
+  max-height: 220px;
+  object-fit: contain;
+}
+
+@media only screen and (max-width: 600px) {
+  .descr {
+    display: none;
+  }
+  .card {
+    width: 16rem !important;
+  }
+}

@@ -3,59 +3,59 @@ import './Salcam.css'
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
 import GridCards from '../../features/GridCards/GridCards'
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, getDocs, query, where } from 'firebase/firestore';
 import { db } from '../firebase';
+import { useParams } from 'react-router-dom'
 
 function Salcam() {
+  const { category } = useParams();
+  console.log(category)
   const [products, setProducts] = useState([])
 
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const productsData = []
-        const querySnapshot = await getDocs(
-          collection(db, 'products'),
-        )
+        const productsData = [];
+        const q = query(collection(db, 'products'), where('category', '==', category));
+        const querySnapshot = await getDocs(q);
 
         querySnapshot.forEach((doc) => {
-          const postData = doc.data()
-          const productId = doc.id
+          const postData = doc.data();
+          const productId = doc.id;
 
           // Adaugă fiecare post în array-ul postsData
           productsData.push({
             id: productId,
-            imageUrl:postData.image,
-            title:postData.title,
-            description:postData.descritpion,
-            price:postData.price,
-            category:postData.category
-          })
-        })
+            imageUrl: postData.image,
+            title: postData.title,
+            description: postData.descritpion,
+            price: postData.price,
+            category: postData.category,
+          });
+        });
 
-        setProducts(productsData)
+        setProducts(productsData);
       } catch (error) {
-        console.error('Eroare la preluarea datelor:', error)
+        console.error('Eroare la preluarea datelor:', error);
       }
-    }
+    };
 
-    fetchData()
-    console.log(products.image)
-  }, [])
+    fetchData();
+  }, [category]);
   return (
     <div> 
-    <Header/>
-    <div className='wrapper-img container-md'>
-     <img src="./images/bees-logo.jpeg" alt="logo" />
+    <Header />
+    <div className='p-4 mb-5'>
    </div> 
-   <h1 className='text-white p-4'>Salcam</h1>
+   <h1 className='text-white p-4 mb-5'>{category}</h1>
     <hr className='white-line'/>
-   <div className='container-fluid p-4 d-flex'>
+   <div className='container-fluid wrapper-products d-flex'>
    {products.map(({ title, description,price, category, id,imageUrl }) => (
           <GridCards
             title={title}
             postId={id}
-            key={id}
+            id={id}
             image={imageUrl}
             description={description}
             price={price}

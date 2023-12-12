@@ -1,26 +1,76 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './ItemDetails.css'
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import Carousel from 'react-bootstrap/Carousel';
 import Cards from '../../features/CardGroup/CardGroup';
+import { doc, getDoc, } from 'firebase/firestore';
+import { useParams } from 'react-router-dom';
+import { db } from '../firebase';
+import { useStateValue } from '../../StateProvider';
 
 
 function ItemDetails() {
+  const [{basket},dispatch] = useStateValue()
+  const { id } = useParams();
+  const [product, setProduct] = useState(null);
+
+  const addToBasket = () => {
+    dispatch({
+      type:'ADD_TO_BASKET',
+      item:{
+        id:product.id,
+        title:product.title,
+        price:product.price,
+        image:product.image,
+      }
+    })
+  }
+  useEffect(() => {
+    const fetchProductDetails = async () => {
+      try {
+        const docRef = doc(db, 'products', id);
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+          const postData = docSnap.data();
+          setProduct({
+            id,
+            image: postData.image,
+            title: postData.title,
+            description: postData.descritpion,
+            price: postData.price,
+            category: postData.category,
+          });
+        } else {
+          console.log('No such document!');
+        }
+      } catch (error) {
+        console.error('Error getting product details:', error);
+      }
+    };
+
+    fetchProductDetails();
+  }, [id]);
+
+  if (!product) {
+    // Poate afișa un mesaj de încărcare sau redirecționa către o pagină de eroare
+    return <div>Loading...</div>;
+  }
   return (
     <div>
       <div className='mb-5 p-3'><Header/></div>
       <div className=' container-fluid  imgopc  '>
         <div className='container-fluid containerabs p-5 ' >
-            <h1 className='text-white'>Title Miere de Albine la borcan</h1> 
+            <h1 className='text-white'>{product.title}</h1> 
             <hr className='white-line'/>
             <div className='row d-flex '>
 
             <div className='col-md-6 p-4 mb-5 d-flex align-item-center justify-content-center'>
             <img id='imgDetails'
               alt=""
-              src="/images/card1.jpg"
+              src={product.image}
               width="500"
               height="500"
               className="d-inline-block align-top "
@@ -29,50 +79,31 @@ function ItemDetails() {
             </div>
             <div className='col-md-4 p-5 '>
               <div className='item-price'>
-                <h4 className='text-white '>14.00 lei</h4>
+                <h4 className='text-white '>{product.price} RON</h4>
                 <p className='text-white' >Status:</p>
               </div>
               <hr className='white-line'/>
               <div className='description p-3'>
-                <p className='text-white h4'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi asperiores eveniet accusamus deleniti repellendus sunt corrupti unde maiores recusandae harum.</p>
+                <p className='text-white h4'>{product.description}</p>
               </div>
               <hr className='white-line'/>
               <div className='buttons-details'>
               <label  className="text-white m-3" >Quantity : </label>
               <input type="number" id="quantitydetails"  name="quantity" min="1" max="5"/>
-              <button  className='btn-cardfav btn-details m-2 '>Cumpara</button>
+              <button  className='btn-cardfav btn-details m-2' onClick={addToBasket}>Cumpara</button>
              <FavoriteBorderIcon className='text-white'/> 
               </div>
               <hr className='white-line'/>
               <div className='item-price  m-4'>
                 
-                <p className='text-white ' >Categorie: Miere de albine la borcan</p>
+                <p className='text-white ' >Categorie:{product.category}</p>
               </div>
-              
             </div>
-            <div className='container-md container-white  '>
-          <h3 className=' text-center text-white p-1'>Produse similare</h3>
-        </div>
             </div>
         </div>
     </div> 
         
-          <Carousel className='p-4'>
-      <Carousel.Item interval={1000} >
-       
-        
-        <Cards />
-      
-      </Carousel.Item>
-      <Carousel.Item interval={500}>
-      <Cards/>
-       
-      </Carousel.Item>
-      <Carousel.Item>
-      <Cards/>
-       
-      </Carousel.Item>
-    </Carousel>
+          
       <Footer/>
     </div>
   )

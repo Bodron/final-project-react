@@ -29,13 +29,13 @@ function Home() {
         <h1 className='text-white'>Recomandate </h1>
         <hr className='white-line'/>
     </div>
-    <Carousel className='p-4'>
-      <Carousel.Item interval={1000} >
+   {/*  <Carousel className='p-5'>
+      <Carousel.Item interval={2000} >
     <Cards/>
       
        
       </Carousel.Item>
-      <Carousel.Item interval={500}>
+      <Carousel.Item interval={2000}>
       <Cards/>
        
       </Carousel.Item>
@@ -43,7 +43,7 @@ function Home() {
       <Cards/>
         
       </Carousel.Item>
-    </Carousel>
+    </Carousel> */}
     <hr className='white-line mb-5'/>
     <div className='container-fluid mb-5 d-flex content-wrapper '>
         <div className='col-md coloana-img '>

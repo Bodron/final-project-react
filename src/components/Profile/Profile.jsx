@@ -8,10 +8,15 @@ import Row from 'react-bootstrap/Row';
 import Tab from 'react-bootstrap/Tab';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import FavouriteCard from '../../features/FavouriteCard/FavouriteCard';
+import { useStateValue } from '../../StateProvider';
 
 
 
 function Profile() {
+  const [{favourites,user}] = useStateValue()
+  console.log(user)
+  console.log({favourites})
   return (
     <div>
         <div className='mb-5 p-5'><Header/></div>
@@ -45,8 +50,8 @@ function Profile() {
                 <div className='row'>
                     <h4 className='text-white mb-5'>Personal information</h4>
                     <h6 className='text-white mb-4'>Contact information</h6>
-                    <p className='text-white-50'>Bodron Cosmin</p>
-                    <p className='text-white-50'>bodroncosmin98@gmail.com</p>
+                    <p className='text-white-50'>{user?.displayName}</p>
+                    <p className='text-white-50'>{user?.email}</p>
                     <hr className='white-line'/>
                 </div>
                 <div className='row'>
@@ -71,25 +76,15 @@ function Profile() {
                  </Button>
             </Tab.Pane>
             <Tab.Pane eventKey="third">
-              <div className='row mb-4'>
-                <div className='col'>
-                <img
-              alt=""
-              src="/images/card1.jpg"
-              width="200"
-              height="150"
-              className="d-inline-block align-top "
-              style={{objectFit:'contain'}}
-            />
-                </div>
-                <div className='col d-flex align-items-start justify-content-center flex-column'>
-                  <h5 className='text-white'>Title Product</h5>
-                  <p  className='text-white'>150 Ron</p>
-                </div>
-                <div className='col-md-5 d-flex align-items-start justify-content-center flex-column'>
-                <div className='d-flex justify-content-evenly'><button  className='btn-card '>Cumpara</button><button  className='btn-cardfav '>Remove Article</button></div>
-                </div>
-              </div>
+              
+                {favourites?.map((item)=>(
+                    <FavouriteCard
+                    id={item.id}
+                    title={item.title}
+                    image={item.image}
+                    />
+                ))}
+             
             </Tab.Pane>
             <Tab.Pane eventKey="fourth">
             <Form>

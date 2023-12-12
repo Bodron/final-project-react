@@ -6,8 +6,10 @@ import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import Button from 'react-bootstrap/Button';
 import SubTotal from '../SubTotal/SubTotal';
+import { useStateValue } from '../../StateProvider';
 
 function Cart({ show, handleClose,handleOpen }) {
+  const [{basket}] = useStateValue()
    
   return (
     
@@ -21,7 +23,15 @@ function Cart({ show, handleClose,handleOpen }) {
           <Offcanvas.Title>Cart</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body className={style["offcanvas-body"]}>
-       <CartItem/>
+        {basket?.map((item)=>(
+                    <CartItem
+                    id={item.id}
+                    title={item.title}
+                    image={item.image}
+                    price={item.price}
+                    />
+                ))}
+      
        <hr/>
       <SubTotal/>
         </Offcanvas.Body>

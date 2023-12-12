@@ -46,6 +46,7 @@ function SignIn() {
           .then(() => {
             // Profilul a fost actualizat cu succes
             console.log('User profile updated successfully');
+           
           })
           .catch((error) => {
             const errorCode = error.code;
@@ -85,7 +86,7 @@ function SignIn() {
       </Form.Group>
       <Form.Group className="mb-3" >
         <Form.Label className='text-white bold'>Last name</Form.Label>
-        <Form.Control type="text" id='lastName'  placeholder="SecondName"  {...register('lastName')} />
+        <Form.Control type="text" id='lastName'  placeholder="Last name"  {...register('lastName')} />
         {errors.lastName && <p className='errofield'>{errors.lastName.message}</p>}
       </Form.Group>
       <Form.Group className="mb-3" >

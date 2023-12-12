@@ -79,16 +79,13 @@ function Header() {
             <Offcanvas.Body>
               <Nav className="justify-content-end flex-grow-1 pe-3">
               <Nav.Link><NavLink to='/home'>Acasa</NavLink></Nav.Link>
-              <Nav.Link><NavLink to='/tei'>Tei</NavLink></Nav.Link>
-              <Nav.Link><NavLink to='/salcam'>Salcam</NavLink></Nav.Link>
-              <Nav.Link><NavLink to='/poliflora'>Poliflora</NavLink></Nav.Link>
-              <Nav.Link><NavLink to='/accesorii'>Accesorii</NavLink></Nav.Link>
-              <Nav.Link><NavLink to='/login'>Login</NavLink></Nav.Link>
-              <Nav.Link><NavLink to='/signin'>Sign Up</NavLink></Nav.Link>
-              <Nav.Link><NavLink >Hello {user?.displayName}</NavLink></Nav.Link>
-              
-            
-              
+              <Nav.Link><NavLink to='/tei/Tei'>Tei</NavLink></Nav.Link>
+              <Nav.Link><NavLink to='/salcam/Salcam'>Salcam</NavLink></Nav.Link>
+              <Nav.Link><NavLink to='/poliflora/Poliflora'>Poliflora</NavLink></Nav.Link>
+              <Nav.Link><NavLink to='/accesorii/Accesorii'>Accesorii</NavLink></Nav.Link>
+              {user ? (
+                <>
+              <Nav.Link><NavLink >Hello, {user?.displayName}</NavLink></Nav.Link>
               <Cart show={showCart} handleClose={handleCartClose} handleOpen={handleCartShow} />
                 <Dropdown>
                   <Dropdown.Toggle variant="success" id="dropdown-basic">
@@ -103,6 +100,17 @@ function Header() {
         <Dropdown.Item  className='bold'><NavLink onClick={logout} >Logout</NavLink></Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
+                </>
+              ):(
+                <>
+
+                <Nav.Link><NavLink to='/login'>Login</NavLink></Nav.Link>
+                <Nav.Link><NavLink to='/signin'>Sign Up</NavLink></Nav.Link>
+                </>
+              )}
+              
+            
+              
                 
               </Nav>
             </Offcanvas.Body>
