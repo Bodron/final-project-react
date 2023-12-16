@@ -65,7 +65,7 @@ function SignIn() {
   
   return (
     <div> 
-          <div className='mb-5'><Header/></div>
+          <div className='mb-5'></div>
           <div className='container-fluid d-flex align-items-center justify-content-center pt-5'>
           <img
               alt=""
@@ -108,7 +108,7 @@ function SignIn() {
       </Button>
     </Form>
           </div>
-          <div className='m-5'><Footer/></div>
+          <div className='m-5'></div>
     </div>
   )
 }

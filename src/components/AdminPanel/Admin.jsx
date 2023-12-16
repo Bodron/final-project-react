@@ -132,7 +132,7 @@ function Admin() {
   
   return (
     <div>
-    <div className='mb-5 p-5'><Header/></div>
+    <div className='mb-5 p-5'></div>
     <div className='p-5'><h1 className='text-white text-center'>Admin Panel</h1></div>
     <h1 className='textWhite'>{values.title}</h1>
     <div className='container-md p-5'>
@@ -217,7 +217,7 @@ function Admin() {
       </Row>
     </Tab.Container>
         </div>
-      <Footer/>
+      
     </div>
   )
 }

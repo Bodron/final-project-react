@@ -79,7 +79,7 @@ function Header() {
             </Offcanvas.Header>
             <Offcanvas.Body>
               <Nav className="justify-content-end flex-grow-1 pe-3">
-              <Nav.Link><NavLink  to='/home'>Acasa</NavLink></Nav.Link>
+              <Nav.Link><NavLink to='/home'>Acasa</NavLink></Nav.Link>
               <Nav.Link><NavLink to='/tei/Tei'>Tei</NavLink></Nav.Link>
               <Nav.Link><NavLink to='/salcam/Salcam'>Salcam</NavLink></Nav.Link>
               <Nav.Link><NavLink to='/poliflora/Poliflora'>Poliflora</NavLink></Nav.Link>

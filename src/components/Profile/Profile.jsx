@@ -19,7 +19,7 @@ function Profile() {
   console.log({favourites})
   return (
     <div>
-        <div className='mb-5 p-5'><Header/></div>
+        <div className='mb-5 p-5'></div>
         <div className='p-5'><h1 className='text-white text-center'>myProfile</h1></div>
         <div className='container-md p-5'>
 
@@ -161,7 +161,7 @@ function Profile() {
       </Row>
     </Tab.Container>
         </div>
-      <Footer/>
+     
     </div>
   )
 }

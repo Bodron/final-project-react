@@ -21,7 +21,7 @@ function Home() {
 
   return (
     <>
-    <Header/>
+   
      <div className='wrapper-img container-md'>
         <img src="./images/bees-logo.jpeg" alt="logo" />
     </div> 
@@ -72,7 +72,7 @@ function Home() {
             <p className='text-white'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione sapiente nesciunt sint ea voluptatibus consectetur reprehenderit eius at ipsam! Obcaecati.</p>
         </div>
     </div> 
-    <Footer/>
+    
     </>
   )
 }

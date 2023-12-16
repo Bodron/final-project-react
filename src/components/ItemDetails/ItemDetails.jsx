@@ -63,12 +63,12 @@ function ItemDetails() {
   }
 
   if (!product) {
-    // Poate afișa un mesaj de încărcare sau redirecționa către o pagină de eroare
+  
     return <div>Loading...</div>;
   }
   return (
     <div>
-      <div className='mb-5 p-3'><Header/></div>
+      <div className='mb-5 p-3'></div>
       <div className=' container-fluid  imgopc  '>
         <div className='container-fluid containerabs p-5 ' >
             <h1 className='text-white'>{product.title}</h1> 
@@ -112,7 +112,7 @@ function ItemDetails() {
     </div> 
         
           
-      <Footer/>
+     
     </div>
   )
 }

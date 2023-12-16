@@ -13,6 +13,7 @@ import { useStateValue } from '../StateProvider';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css'
+import Footer from './Footer/Footer';
 
 
 
@@ -46,7 +47,7 @@ function App() {
    
     <>
     <BrowserRouter>
- 
+    <Header />
       <Routes path="/">
         <Route path="/tei/:category" exact element={<Salcam />}></Route>
         <Route path="/itemdetails/:id" exact element={<ItemDetails />}></Route>
@@ -70,6 +71,7 @@ function App() {
         draggable
         pauseOnHover
         theme="dark"/>
+        <Footer/>
     </BrowserRouter>
       </>
     

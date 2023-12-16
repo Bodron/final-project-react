@@ -45,7 +45,7 @@ function Salcam() {
   }, [category]);
   return (
     <div> 
-    <Header />
+  
     <div className='p-4 mb-5'>
    </div> 
    <h1 className='text-white p-4 mb-5'>{category}</h1>
@@ -64,7 +64,7 @@ function Salcam() {
         ))}
   
    </div>
-   <Footer/>
+   
     </div>
   )
 }

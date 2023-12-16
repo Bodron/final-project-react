@@ -46,7 +46,7 @@ function onSubmit(values)  {
 
   return (
     <div> 
-          <div className='mb-5'><Header/></div>
+          <div className='mb-5'></div>
           
           <div className='container-fluid d-flex align-items-center justify-content-center pt-5 mb-5'>
           <img
@@ -80,7 +80,7 @@ function onSubmit(values)  {
       </Button>
     </Form>
           </div>
-          <div className='m-5'><Footer/></div>
+          <div className='m-5'></div>
     </div>
   )
 }
