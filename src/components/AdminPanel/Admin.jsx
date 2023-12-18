@@ -22,7 +22,7 @@ import { storage, db } from '../firebase'
 import PanelItem from '../../features/PanelItem/PanelItem';
 
 function Admin() {
-   
+  
     const [products, setProducts] = useState([])
     const [image, setImage] = useState(null)
     const [uploadProgress, setUploadProgress] = useState(0)
@@ -87,6 +87,8 @@ function Admin() {
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+  
+
 
     useEffect(() => {
       const fetchData = async () => {
@@ -99,7 +101,7 @@ function Admin() {
             const postData = doc.data();
             const productId = doc.id;
   
-            // Adaugă fiecare post în array-ul postsData
+           
             productsData.push({
               id: productId,
               imageUrl: postData.image,

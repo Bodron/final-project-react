@@ -86,7 +86,7 @@ function Header() {
               <Nav.Link><NavLink to='/accesorii/Accesorii'>Accesorii</NavLink></Nav.Link>
               {user ? (
                 <>
-              <Nav.Link><NavLink >Hello, {user?.displayName}</NavLink></Nav.Link>
+              <Nav.Link><NavLink > Hello,{user?.displayName}</NavLink></Nav.Link>
               <Cart show={showCart} handleClose={handleCartClose} handleOpen={handleCartShow} />
                 <Dropdown>
                   <Dropdown.Toggle variant="success" id="dropdown-basic">

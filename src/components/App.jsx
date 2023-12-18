@@ -14,6 +14,7 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css'
 import Footer from './Footer/Footer';
+import NotFound from './NotFound/NotFound';
 
 
 
@@ -60,6 +61,7 @@ function App() {
         <Route path="/salcam/:category" exact element={<Salcam />}></Route>
         <Route path="/home" exact element={<Home />}></Route>
         <Route path="/" exact element={<Home />}></Route>
+        <Route path="*" exact element={<NotFound />}></Route>
       </Routes>
       <ToastContainer position="top-right"
         autoClose={5000}

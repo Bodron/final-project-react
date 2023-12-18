@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './Profile.css'
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
@@ -10,11 +10,43 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import FavouriteCard from '../../features/FavouriteCard/FavouriteCard';
 import { useStateValue } from '../../StateProvider';
+import { useForm } from 'react-hook-form'
+import {yupResolver} from '@hookform/resolvers/yup'
+import {object, ref ,string} from 'yup'
+import {getAuth, onAuthStateChanged, updateProfile} from 'firebase/auth'
+import { toast } from 'react-toastify'
+import { useNavigate  } from 'react-router-dom';
 
-
+const registerSchema = object({
+  firstName: string().required('Please tell us your first name'),
+  lastName: string().required('Please tell us your last name'),
+});
 
 function Profile() {
-  const [{favourites,user}] = useStateValue()
+  const navigate = useNavigate();
+  const {register,handleSubmit,formState:{errors}} = useForm({resolver: yupResolver(registerSchema)})
+
+  function onSubmit(values){
+    const { firstName, lastName } = values;
+    const auth = getAuth();
+      updateProfile(auth.currentUser, {
+        displayName: `${lastName} ${firstName}`, 
+          }).then(() => {
+            toast.success("Profile updated complete")
+            dispatch({
+              type: 'SET_USER',
+              user: auth.currentUser,
+            })
+            navigate('/home')
+         }).catch((error) => {
+            toast.error(error.message)    
+    });
+  }
+
+
+  
+
+  const [{favourites,user}, dispatch] = useStateValue()
   console.log(user)
   console.log({favourites})
   return (
@@ -132,25 +164,18 @@ function Profile() {
       </Button>
     </Form>
             </Tab.Pane>
-            <Tab.Pane eventKey="five"> <Form>
+            <Tab.Pane eventKey="five">
+             <Form onSubmit={handleSubmit(onSubmit)}>
             <h4 className='text-white mb-5'>Personal information</h4>
           <Form.Group className="mb-3" >
         <Form.Label className='text-white bold'>Name</Form.Label>
-        <Form.Control type="text" placeholder="Name" className='blackInput'/>
+        <Form.Control type="text"  id='firstName' placeholder="FirstName"  {...register('firstName')} className='blackInput'/>
+        {errors.firstName && <p className='errofield'>{errors.firstName.message}</p>}
       </Form.Group>
       <Form.Group className="mb-3" >
         <Form.Label className='text-white bold'>Surnames *</Form.Label>
-        <Form.Control type="password" placeholder="Surnames" className='blackInput'/>
-      </Form.Group>
-      <Form.Group className="mb-3" >
-        <Form.Label className='text-white bold'>Telephone number </Form.Label>
-        <Form.Control type="password" placeholder="Telephone number" className='blackInput'/>
-      </Form.Group>
-      <Form.Group className="mb-3" >
-        <Form.Check type="checkbox" label="Change e-mail address" id='emailBox' />
-      </Form.Group>
-      <Form.Group className="mb-3" >
-        <Form.Check type="checkbox" label="Change password"  id='passwordBox' />
+        <Form.Control type="text" id='lastName' placeholder="LastName"  {...register('lastName')}className='blackInput'/>
+        {errors.lastName && <p className='errofield'>{errors.lastName.message}</p>}
       </Form.Group>
       <Button variant="primary" type="submit">
         Save

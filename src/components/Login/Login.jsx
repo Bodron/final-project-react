@@ -9,6 +9,7 @@ import {yupResolver} from '@hookform/resolvers/yup'
 import {object, ref ,string} from 'yup'
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { toast } from 'react-toastify'
+import { useNavigate  } from 'react-router-dom';
 
 
 
@@ -22,10 +23,12 @@ const loginSchema = object ({
 
 
 function Login() {
+  const navigate = useNavigate();
 
 const {register,handleSubmit,formState:{errors}} = useForm({resolver: yupResolver(loginSchema)})
 
 function onSubmit(values)  {
+ 
   const {email,password,}= values 
   const auth = getAuth()
   signInWithEmailAndPassword(auth, email, password)
@@ -33,6 +36,7 @@ function onSubmit(values)  {
       // Signed in
       const user = userCredential.user
       toast.success('Login Succesfuly');
+      navigate('/home');
     
     })
     .catch((error) => {

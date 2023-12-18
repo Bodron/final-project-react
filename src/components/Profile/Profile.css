@@ -29,3 +29,7 @@
 input::placeholder {
   color: rgb(170, 170, 170) !important;
 }
+.blackInput:focus {
+  background-color: black;
+  color: white;
+}

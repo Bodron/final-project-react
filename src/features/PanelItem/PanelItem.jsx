@@ -8,6 +8,7 @@ import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import { toast } from 'react-toastify';
 
 function PanelItem({ title, description, price, category, id, image,onDelete }) {
+  const [showModalError, setShowModalError] = useState(false);
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -65,7 +66,19 @@ function PanelItem({ title, description, price, category, id, image,onDelete }) 
        
       }
     };
-
+    const handleDeleteModal = async () => {
+      try {
+        await onDelete(id);
+        toast.success('Ai sters produsul cu succes!');
+      } catch (error) {
+        console.error('Error deleting product:', error);
+      } finally {
+        // Close the delete modal
+        setShowModalError(false);
+      }
+    };
+    const handleCloseModalError = () => setSsetShowModalErrorhow(false);
+    const handleShowModalError = () => setShowModalError(true);
   return (
     <>
     <div className='row mb-4' key={id}>
@@ -84,7 +97,29 @@ function PanelItem({ title, description, price, category, id, image,onDelete }) 
       <p  className='text-white'>{price} RON</p>
     </div>
     <div className='col-md-5 d-flex align-items-start justify-content-center flex-column'>
-    <div className='d-flex justify-content-evenly'><button  className='btn-card' onClick={handleDelete}>Delete</button><button  className='btn-cardfav'  onClick={handleShow}>Update</button></div>
+    <div className='d-flex justify-content-evenly'>
+      <button  className='btn-card' onClick={handleShowModalError}>Delete</button>
+      <button  className='btn-cardfav'  onClick={handleShow}>Update</button>
+      </div>
+   
+   {/* Modal for delete */}
+   <Modal show={showModalError} onHide={() => setShowModalError(false)}>
+        <Modal.Body>
+          <p className='mt-2 errofield'>
+            Esti sigur ca vrei sa stergi produsul {title}?
+          </p>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setShowModalError(false)}>
+            Cancel
+          </Button>
+          <Button variant="primary" onClick={handleDelete}>
+            Delete
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
+    {/* Modal for update */}
     <Modal show={show} onHide={handleClose}>
          <Modal.Header closeButton>
          <h4 className='text-white mb-5'>Update item</h4>

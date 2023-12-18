@@ -15,6 +15,7 @@ import {
 } from 'firebase/auth'
 
 import { toast } from 'react-toastify'
+import { useNavigate  } from 'react-router-dom';
 
 
 
@@ -28,6 +29,7 @@ const registerSchema = object({
 
 
 function SignIn() {
+  const navigate = useNavigate();
   const {register,handleSubmit,formState:{errors}} = useForm({resolver: yupResolver(registerSchema)})
 
   function onSubmit(values) {
@@ -46,6 +48,7 @@ function SignIn() {
           .then(() => {
             // Profilul a fost actualizat cu succes
             console.log('User profile updated successfully');
+            navigate('/login');
            
           })
           .catch((error) => {
