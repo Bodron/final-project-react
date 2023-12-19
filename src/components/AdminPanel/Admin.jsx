@@ -22,7 +22,6 @@ import { storage, db } from '../firebase'
 import PanelItem from '../../features/PanelItem/PanelItem';
 
 function Admin() {
-  
     const [products, setProducts] = useState([])
     const [image, setImage] = useState(null)
     const [uploadProgress, setUploadProgress] = useState(0)
@@ -88,7 +87,8 @@ function Admin() {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
   
-
+   
+   
 
     useEffect(() => {
       const fetchData = async () => {
@@ -186,6 +186,7 @@ function Admin() {
           <Form.Group className="mb-3" controlId="adminTitle">
         <Form.Label className='text-white bold'>Titlu</Form.Label>
         <Form.Control type="text" placeholder="Title" name='title'  value={values.title} onChange={handleInputChange}/>
+      
       </Form.Group>
       <Form.Group className="mb-3" controlId="adminDescription">
         <Form.Label className='text-white bold'>Description</Form.Label>

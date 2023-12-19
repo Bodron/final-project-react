@@ -26,7 +26,8 @@ function ItemDetails() {
         title:product.title,
         price:product.price,
         image:product.image,
-        cantitate:cantitate
+        cantitate:cantitate,
+        priceId:product.priceId
       }
     })
     toast.success('Ai adaugat cu succes in cos!')
@@ -46,6 +47,7 @@ function ItemDetails() {
             description: postData.descritpion,
             price: postData.price,
             category: postData.category,
+            priceId: postData.priceId
           });
         } else {
           console.log('No such document!');
@@ -67,7 +69,7 @@ function ItemDetails() {
     return <div>Loading...</div>;
   }
   return (
-    <div>
+    <div key={product.priceId}>
       <div className='mb-5 p-3'></div>
       <div className=' container-fluid  imgopc  '>
         <div className='container-fluid containerabs p-5 ' >

@@ -15,6 +15,9 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css'
 import Footer from './Footer/Footer';
 import NotFound from './NotFound/NotFound';
+import SuccesPay from './SuccesPay/SuccesPay';
+import CancelPay from './CancelPay/CancelPay';
+import "@stripe/stripe-js"
 
 
 
@@ -61,6 +64,8 @@ function App() {
         <Route path="/salcam/:category" exact element={<Salcam />}></Route>
         <Route path="/home" exact element={<Home />}></Route>
         <Route path="/" exact element={<Home />}></Route>
+        <Route path="/succes" exact element={<SuccesPay />}></Route>
+        <Route path="/cancel" exact element={<CancelPay />}></Route>
         <Route path="*" exact element={<NotFound />}></Route>
       </Routes>
       <ToastContainer position="top-right"

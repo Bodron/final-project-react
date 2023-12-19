@@ -5,6 +5,7 @@ import Card from 'react-bootstrap/Card';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { Col, Row } from 'react-bootstrap';
 import { useStateValue } from '../../StateProvider';
+import { toast } from 'react-toastify'
 
 function GridCards({ title, description, price, category, id, image }) {
   const [isCollapsed, setIsCollapsed] = useState(true);
@@ -20,6 +21,7 @@ function GridCards({ title, description, price, category, id, image }) {
         image:image,
       }
     })
+    toast.success('Ai adaugat produsul la favorite.')
   }
   
 

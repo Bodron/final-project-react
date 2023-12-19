@@ -30,8 +30,6 @@ function Header() {
   }
 
   const [{user}] = useStateValue()
-  
-
   const [showNavbar, setShowNavbar] = useState(false);
   const [showCart, setShowCart] = useState(false);
 

@@ -11,7 +11,6 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   updateProfile,
-  
 } from 'firebase/auth'
 
 import { toast } from 'react-toastify'
@@ -35,21 +34,16 @@ function SignIn() {
   function onSubmit(values) {
     const { email, password, firstName, lastName } = values;
     const auth = getAuth();
-  
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Signed up
         const user = userCredential.user;
         toast.success('Register succesfuly')
-        // Updatează profilul cu displayName format din firstName și lastName
         updateProfile(user, {
           displayName: `${firstName} ${lastName}`,
         })
           .then(() => {
-            // Profilul a fost actualizat cu succes
             console.log('User profile updated successfully');
             navigate('/login');
-           
           })
           .catch((error) => {
             const errorCode = error.code;

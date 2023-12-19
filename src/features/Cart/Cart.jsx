@@ -26,6 +26,7 @@ function Cart({ show, handleClose,handleOpen }) {
         <Offcanvas.Body className={style["offcanvas-body"]}>
         {basket?.map((item)=>(
                     <CartItem
+                    priceId={item.priceId}
                     id={item.id}
                     title={item.title}
                     image={item.image}

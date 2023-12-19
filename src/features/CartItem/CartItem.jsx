@@ -2,7 +2,7 @@ import React from 'react'
 import { useStateValue } from '../../StateProvider'
 import './CartItem.css'
 
-function CartItem({id,title,image,price,cantitate}) {
+function CartItem({id,title,image,price,cantitate,priceId}) {
   const [{basket},dispatch] = useStateValue()
   const removeFromBasket = () => {
     dispatch({
@@ -43,7 +43,7 @@ function CartItem({id,title,image,price,cantitate}) {
   };
   return (
     <>
-    <div key={id}>
+    <div key={[id,priceId]}>
          <div className='row mb-4'>
                 <div className='col'>
                 <img
