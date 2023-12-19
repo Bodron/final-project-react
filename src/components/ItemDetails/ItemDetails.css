@@ -2,7 +2,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url(./images/oozinghoney.jpeg);
   background-position: center;
   background-repeat: no-repeat;
   -webkit-mask-image: linear-gradient(to top, transparent 5%, black 12%);
