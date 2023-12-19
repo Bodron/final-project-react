@@ -24,7 +24,6 @@ function Salcam() {
           const postData = doc.data();
           const productId = doc.id;
 
-          // Adaugă fiecare post în array-ul postsData
           productsData.push({
             id: productId,
             imageUrl: postData.image,
